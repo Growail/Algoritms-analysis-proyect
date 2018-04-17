@@ -174,7 +174,23 @@ public class Graph{
 
 	return node;
     }
+    /**
+     * Crea arreglo de multiples nodos.
+     * Asigna el tag A# a cada nodo numeralmente ascendente.
+     **/
+    public void createMultipleVertice(int quantity){
+        Node [] vertice = new Node[quantity];
+        char tag = 'A';
+        int tagNumber = 0;
 
+        for(int verticeIndex = 0 ; verticeIndex < quantity ; ++verticeIndex){
+            ++tagNumber;
+            vertice[verticeIndex] = new Node(tag + Integer.toString(tagNumber));
+        }
+        
+        
+    }
+    
     public Set<String> verticeKeys()
     {
 	return this.nodes.keySet();
@@ -184,5 +200,7 @@ public class Graph{
     {
 	return new HashSet<Arc>(this.arcs.values());
     }
+    
+    
     
 }
