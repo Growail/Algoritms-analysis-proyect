@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package progra.análisis;
+import MapCode.Map;
 
 /**
  *
@@ -16,6 +17,7 @@ public class PrograAnálisis {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Map mapa = new Map();
     }
     
 }

@@ -16,18 +16,37 @@ vertice = arista = conexión = arc
 
 public class Graph{
 
-    private HashMap<String, Node> nodes;
-    private HashMap<Integer, Arc> arcs;
+    private Node[] nodes;
 
     /**
      * esto contruye el grafo pero esta vacio
      **/
-    public Graph()
+    public Graph(int nodeQuantity, int stationArcs, int[][] axisCoordinates)
     {
-	this.nodes = new HashMap<String, Node>();
-	this.arcs = new HashMap<Integer, Arc>();
+	nodes = new Node[nodeQuantity];
+        
+        char tag = 'A';
+        int tagNumber = 0;
+        int[] axsis = new int[2];
+        
+        for(int nodeNumber = 0 ; nodeNumber < nodeQuantity ; ++nodeNumber){
+            ++tagNumber;
+            
+            axsis[0] = axisCoordinates[nodeNumber][0];
+            axsis[1] = axisCoordinates[nodeNumber][1];
+            
+            nodes[nodeNumber] = new Node(tag + Integer.toString(tagNumber), axsis);
+        }
+        
+        
+        
+        for(int nodeNumber = 0 ; nodeNumber < nodeQuantity; ++ nodeNumber){
+            for(int arcNumber = 0; arcNumber < 0 ; ++ arcNumber)
+        }
+        
     }
-
+    
+    
 
     /**
      * esto construye un grafo usando una lista de nodos preconstruida como entrada
@@ -35,6 +54,7 @@ public class Graph{
      *
      *@param nodes. Arraylist usado para llenar el grafo
      **/
+    /*
     public Graph(ArrayList<Node> nodes)
     {
 	this.nodes = new HashMap<String, Node>();
@@ -45,7 +65,7 @@ public class Graph{
 		this.nodes.put(v.getTag(), v);
 	    }
 	
-    }
+    }*/
 
 
     /**
@@ -54,12 +74,12 @@ public class Graph{
      * @param v1. Un extremo del arco
      * @param v2. Otro extremo del arco
      * @return true. Si el arco no existe previamente
-     **/
+     **//*
     public boolean insertArc(Node v1, Node v2)
     {
       	return insertArc(v1, v2, 1);
     }
-
+*/
     
     /**
  * Inserta un arco entre v1 y v2 con un peso dado como parámetro
@@ -70,7 +90,7 @@ public class Graph{
      * @param v2. Otro extremo del arco
      * @param peso. Coste para llegar de v1 a v2 
      * @return true. Si el arco no existe previamente
-     **/
+     **//*
     public boolean insertArc(Node v1, Node v2, int peso)
     {
 	if(v1.equals(v2)) //nodes identicos?
@@ -87,18 +107,18 @@ public class Graph{
 	v1.insertNeighbour(arc);
 	v2.insertNeighbour(arc);
 	return true;
-    }
+    }*/
 
     /** 
      * @param arc. Arco que estamos buscando
      * @return true. Si el grafo contiene ese arc
      **/
-    public boolean containsArc(Arc arc)
+    /*public boolean containsArc(Arc arc)
     {
 	if(arc.getNode1() == null || arc.getNode2() == null)
 	    return false;
 	return this.arcs.containsKey(arc.hashCode());
-    }
+    }*/
 
 
     /**
@@ -106,20 +126,20 @@ public class Graph{
      *
      *@param arc. Arc que se quiere eliminar del grafo
      *@return Arc. Arc borrada del grafo
-     */
+     *//*
     public Arc deleteArc(Arc arc)
     {
 	arc.getNode1().deleteNeighbour(arc);
 	arc.getNode2().deleteNeighbour(arc);
 	return this.arcs.remove(arc.hashCode());
-    }
+    }*/
 
     /**
      * Retorna true si el nodo node se encuentra en el grafo
      * 
      * @param node. nodo que se busca
      * @return boolean. True si el nodo se encuentra.
-     **/    
+     **/ /*   
     public boolean containsNode(Node node)
     {
 	return (this.nodes.get(node.getTag()) != null);
@@ -129,7 +149,7 @@ public class Graph{
     {
 	return this.nodes.get(tag);
     }
-
+*/
     /**
      * si el vertice que se va a insertar existe previamente, se consulta si existe permiso para
      * sobreescribirlo, si hay, se eliminan TODAS LAS ADYACENCIAS existentes
@@ -137,7 +157,7 @@ public class Graph{
      * @param node.
      * @param overwriteNode. Permiso para sobreescribir el nodo
      * @return boolean. Verdarero si el nodo se inserta con éxito
-     **/
+     **//*
     public boolean insertNode(Node node, boolean overwriteNode)
     {
 	Node actual = this.nodes.get(node.getTag());
@@ -153,7 +173,7 @@ public class Graph{
 
 	nodes.put(node.getTag(), node);
 	return true;
-    }
+    }*/
 
     /**
      * Elimina el vÃ©rtice especificado mediante la tag
@@ -164,7 +184,7 @@ public class Graph{
      *
      * @param tag.
      * @return Node. Devuelve el nodo eliminado
-     **/
+     **//*
     public Node deleteNode(String tag)
     {
 	Node node = nodes.remove(tag);
@@ -173,11 +193,11 @@ public class Graph{
 	    this.deleteArc(node.getNeighbour(0));
 
 	return node;
-    }
+    }*/
     /**
      * Crea arreglo de multiples nodos.
      * Asigna el tag A# a cada nodo numeralmente ascendente.
-     **/
+     **//*
     public void createMultipleVertice(int quantity){
         Node [] vertice = new Node[quantity];
         char tag = 'A';
@@ -201,6 +221,6 @@ public class Graph{
 	return new HashSet<Arc>(this.arcs.values());
     }
     
-    
+    */
     
 }

@@ -1,30 +1,34 @@
-/*
 
- */
+
 package MapCode;
 import GraphCode.Graph;
 import java.util.Random;
-/**
- *
- * @author Kevin PC
- */
+
 public class Map {
     
     Graph mainGraph;
+    int [][] axisCoordinates;
     
-    
-    Map(int stationQuantity, int stationArcs){
-     mainGraph = new Graph();
-     createMap(stationQuantity, stationArcs);
+    public Map(int stationQuantity, int stationArcs){
+        createMap(stationQuantity, stationArcs);
+        mainGraph = new Graph(stationQuantity, stationArcs,axisCoordinates);
+        
     }
     
-    void createMap(int stationQuantity, int stationArcs){
+    private void createMap(int stationQuantity, int stationArcs){
         
-        Random randomNumber = new Random();
+        axisCoordinates = new int [stationQuantity][2];
+        
+        Random randomNumberAxis = new Random();
+        
         
         for(int stationNumber = 0; stationNumber < stationQuantity ; ++ stationNumber){
-            
+            axisCoordinates[stationNumber][0] = randomNumberAxis.nextInt(500);
+            axisCoordinates[stationNumber][0] = randomNumberAxis.nextInt(500);
         }
         
     }
+    
+    
+    
 }
