@@ -15,18 +15,30 @@ public class Node
  
     private ArrayList<Arc> vecinity;
     private String tag;
+    private Boolean available;
 
     public Node (String tag)
     {
 	this.tag = tag;
 	this.vecinity = new ArrayList<Arc>();
+        available = true;
     }
 
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
+
+    
     /**
      * AÃ±ade un objeto Arc al arraylist vecinity
     si y solo si este no está ya adentro
      * @param arc. Objeto
      */
+    
     public void insertNeighbour(Arc arc)
     {
 	if( !this.vecinity.contains(arc))

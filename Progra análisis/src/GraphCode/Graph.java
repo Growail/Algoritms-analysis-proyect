@@ -83,10 +83,15 @@ public class Graph{
 	else if( v1.containsANeighbour(arc) || v2.containsANeighbour(arc)) //arc ya une a v1 o v2?
 	    return false;
 
+        if (v1.getAvailable()==true && v2.getAvailable()==true)
+        {
 	arcs.put(arc.hashCode(), arc);
 	v1.insertNeighbour(arc);
 	v2.insertNeighbour(arc);
+        System.out.println("Route from "+v1.getTag()+" to "+v2.getTag()+", distance "+peso +" KM");
 	return true;
+        }
+        return false;
     }
 
     /** 
@@ -201,6 +206,7 @@ public class Graph{
 	return new HashSet<Arc>(this.arcs.values());
     }
     
+ 
     
     
 }
