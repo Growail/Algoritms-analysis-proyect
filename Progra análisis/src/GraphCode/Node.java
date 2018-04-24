@@ -1,6 +1,7 @@
 package GraphCode;
 
 import java.util.ArrayList;
+import java.lang.Math;
 
 /*
 cada una de las instancias de esta clase son un vertice del grafo
@@ -13,50 +14,37 @@ el arraylist vecinity tiene los arcos conectados al vértice
 public class Node
 {
  
-    private ArrayList<Arc> vecinity;
     private String tag;
+    private int[] axis;
+    private int droneQuantity;
 
-    public Node (String tag)
+    public Node (String tag, int[] axis)
     {
 	this.tag = tag;
-	this.vecinity = new ArrayList<Arc>();
+        
+        this.axis = new int[2];
+        this.axis[0] = axis[0];
+        this.axis[1] = axis[1];
+        
     }
-
+    
+    public double getDistance(Node otherNode){
+        return Math.hypot(axis[0] - otherNode.getAxis(0), axis[1] - otherNode.getAxis(1));
+    }
+    
+    /**
+     * axisLetter 0 = X
+     * axisLetter 1 = Y
+     
+     **/
+    public int getAxis(int axisLetter){
+        return this.axis[axisLetter];
+    }
     /**
      * AÃ±ade un objeto Arc al arraylist vecinity
     si y solo si este no está ya adentro
      * @param arc. Objeto
      */
-    public void insertNeighbour(Arc arc)
-    {
-	if( !this.vecinity.contains(arc))
-	    this.vecinity.add(arc);
-    }
-
-    public boolean containsANeighbour(Arc arc)
-    {
-	return this.vecinity.contains(arc);
-    }
-
-    public Arc getNeighbour(int indice)
-    {
-	return this.vecinity.get(indice);
-    }
-
-    public Arc deleteNeighbour(int indice)
-    {
-	return this.vecinity.remove(indice);
-    }
-//aquí está el borrar de las 2 maneras, por indice y por arco, por aquello
-    public void deleteNeighbour(Arc arista)
-    {
-	this.vecinity.remove(arista);
-    }
-    
-    public int getNeighbourCount()
-    {
-	return this.vecinity.size();
-    }
 
     public String getTag()
     {
@@ -87,13 +75,6 @@ public class Node
 	return "Vertice: " + this.tag;
     }
 
-    public int hashCode()
-    {
-	return this.getTag().hashCode();
-    }
-    
-    public ArrayList<Arc> getNeighbour()
-    {
-	return new ArrayList<Arc>(this.vecinity);
-    }
+
+
 }

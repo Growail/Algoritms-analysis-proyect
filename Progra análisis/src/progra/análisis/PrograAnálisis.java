@@ -17,7 +17,6 @@ public class PrograAnálisis {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Map mapa = new Map();
     }
     
 }

@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * usando los nodos A y D, C y E y así quedan todos conectados
  */
 public class TestingArea{
+    
     public static void main (String [] args){
     }
 }

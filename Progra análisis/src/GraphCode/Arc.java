@@ -10,6 +10,11 @@ public class Arc implements Comparable<Arc>
 {
     private Node node1, node2;
     private int weight;
+    private Arc nextArc;
+    
+    
+    private int height;
+    private int width;
 
     /**
      * @param node1. de donde sale
@@ -136,5 +141,18 @@ public class Arc implements Comparable<Arc>
 	    return true;
 
 	return false;
+    }
+    
+    public Node getDestination(){
+        return node2;
+    }
+    public int getLength(){
+        return weight;
+    }
+    public void beginJurney(){
+        double distance = node1.getDistance(node2);
+        
+        
+        
     }
 }

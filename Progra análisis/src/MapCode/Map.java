@@ -7,6 +7,7 @@ import java.util.Random;
 public class Map {
     
     Graph mainGraph;
+    
     int [][] axisCoordinates;
     
     public Map(int stationQuantity, int stationArcs){
@@ -28,6 +29,13 @@ public class Map {
         }
         
     }
+    
+    public void initiateSimulation(int stationQuantity, int time){
+        
+    }
+    
+    
+    
     
     
     
