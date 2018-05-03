@@ -12,8 +12,9 @@ import java.util.ArrayList;
  */
 public abstract class PlanManager {
 //89920191
-    public  void planificar(Graph pGrafo, ArrayList<Arc>  pArcos) // 1.tener las estrucutras y la idea que se van a recibir aqui
+    public  void planificar(Graph pGrafo, int stationQuantity, int arcQunatity,
+            int duration, int[] pathSizes, int travelsQuantity) // 1.tener las estrucutras y la idea que se van a recibir aqui
     {
-        
+      //ArrayList<Travel> aTravels  
     }
 }
