@@ -1,5 +1,5 @@
 
-package MapCode;
+package GraphicalInterface;
 import javax.swing.*;
 
 public class MapFrame extends JFrame {

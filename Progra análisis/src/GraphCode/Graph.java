@@ -69,8 +69,5 @@ public class Graph{
         
     }
     
-    public Arc backtrackingAlgorithm (int[] sizes, Node beginning, Node ending){
-        
-    }
     
 }

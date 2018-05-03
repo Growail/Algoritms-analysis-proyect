@@ -1,5 +1,7 @@
 package GraphCode;
 
+import MapCode.Drone;
+import MapCode.Station;
 import java.util.ArrayList;
 import java.lang.Math;
 
@@ -17,9 +19,11 @@ public class Node
     private String tag;
     private int[] axis;
     private int droneQuantity;
+    private Station station;
 
     public Node (String tag, int[] axis)
     {
+        station = new Station();
 	this.tag = tag;
         
         this.axis = new int[2];
@@ -75,6 +79,11 @@ public class Node
 	return "Vertice: " + this.tag;
     }
 
-
-
+    public void addDrone(Drone newDrone){
+        station.addDrone(newDrone);
+    }
+    
+    public Station getStation(){
+        return station;
+    }
 }
