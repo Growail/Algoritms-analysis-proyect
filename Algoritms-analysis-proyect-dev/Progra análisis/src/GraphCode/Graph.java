@@ -50,24 +50,48 @@ public class Graph{
             System.out.println("");
         }
         
-        for (int nodesCont = 0; nodesCont<nodeQuantity; nodesCont+=2)
+        for (int nodesCont = 0; nodesCont<nodeQuantity; nodesCont++)
         {
             Random randomNode1 = new Random();
             Random randomNode2 = new Random();
             Random randomWeight = new Random();
             
-            int originNode = randomNode1.nextInt(nodeQuantity);
+            int randomDestination, randomDestination2;
             
-            Arc newarc1 = new Arc(nodes[originNode], 
-                    nodes[randomNode1.nextInt(nodeQuantity)], abs(randomWeight.nextInt(1000)+120));
+            randomDestination = randomNode1.nextInt(nodeQuantity);
+            randomDestination2 = randomNode2.nextInt(nodeQuantity);
+            System.out.println(randomDestination+ " random 1");
+            System.out.println(randomDestination2+ " random 2");
             
-            Arc newarc2 = new Arc(nodes[originNode], 
-                    nodes[randomNode1.nextInt(nodeQuantity)], abs(randomWeight.nextInt(1000)+120));
+            if(randomDestination2 == randomDestination || randomDestination2 == 0)
+            {
+                if(randomDestination2 == 0)
+                {
+                    randomDestination2 = nodeQuantity;
+                }
+                else
+                {
+                    randomDestination2-=1;
+                }
+            }
+                    
+            Arc newarc1 = new Arc(nodes[nodesCont], 
+                    nodes[randomDestination], abs(randomWeight.nextInt(1000)+120));
             
-            nodesArcs[nodesCont] = newarc1;
-            nodesArcs[nodesCont+1] = newarc2;
-            System.out.println(nodesArcs[nodesCont]);
-            System.out.println(nodesArcs[nodesCont+1]);
+            Arc newarc2 = new Arc(nodes[nodesCont], 
+                    nodes[randomDestination2], abs(randomWeight.nextInt(1000)+120));
+            
+            if(newarc1.getNode1() != null)
+            {
+                nodesArcs[nodesCont] = newarc1;
+                System.out.println(nodesArcs[nodesCont]);
+            }
+            if (newarc2.getNode1() != null)
+            {
+                nodesArcs[nodesCont+1] = newarc2;
+                System.out.println(nodesArcs[nodesCont+1]);
+            }
+            
             
             
         }
@@ -104,62 +128,79 @@ public class Graph{
                 
             }
         }
-        for(int pointerNodes = 0; pointerNodes<nodes.length; pointerNodes++)
+        for(int pointerNodesDestiny = 0; pointerNodesDestiny<nodes.length; pointerNodesDestiny++)
         {
-            if (nodes[pointerNodes].getTag().equals(destinyTag)){
-                System.out.println("Nodo destino: "+nodes[pointerNodes].getTag());
+            if (nodes[pointerNodesDestiny].getTag().equals(destinyTag)){
+                destiny = nodes[pointerNodesDestiny];
+                System.out.println("Nodo destino: "+nodes[pointerNodesDestiny].getTag());
             }
         }
         ArrayList queue = new ArrayList();
         int distance;
-        Boolean AvailablePath = false;
+        Boolean AvailablePath = true;
         
         System.out.println(nodesArcs.length+" size");
-        while(source != destiny)
+        while(!source.equals(destiny))
         {
             System.out.println(source.getTag() + " sourceTag");
             System.out.println(destiny.getTag()+" destinyTag");
             try{
              for(int pointerLastNode = 0; pointerLastNode < nodesArcs.length; pointerLastNode++)
              {
-                 if(nodesArcs[pointerLastNode].getNode1()== source || nodesArcs[pointerLastNode].getNode1()== source)
+                 System.out.println(pointerLastNode+"  cntador ");
+                 
+                 if(nodesArcs[pointerLastNode].getNode1()== source)
                  {
                      if(nodesArcs[pointerLastNode].getNode1()== source)
                      {
                          if (nodesArcs[pointerLastNode].getNode2().getVisited() == false)
                          {
                          source = nodesArcs[pointerLastNode].getNode2();
+                         System.out.println(nodesArcs[pointerLastNode].getNode2().getTag()+" new source");
                          nodesArcs[pointerLastNode].getNode2().setVisited(true);
                          queue.add(nodesArcs[pointerLastNode]);
+                         pointerLastNode = 0;
                          System.out.println(nodesArcs[pointerLastNode].toString());
                          }
                          else
+                         {
+                             System.out.println("exit 1");
+                             AvailablePath = false;
                              break;
+                         }
                      }
-                     else if (nodesArcs[pointerLastNode].getNode2()== source)
+                  else if (nodesArcs[pointerLastNode].getNode2()== source)
                      {
                          if (nodesArcs[pointerLastNode].getNode1().getVisited() == false)
                          {
                          source = nodesArcs[pointerLastNode].getNode1();
+                         System.out.println(nodesArcs[pointerLastNode].getNode1().getTag()+" new source");
                          nodesArcs[pointerLastNode].getNode1().setVisited(true);
                          queue.add(nodesArcs[pointerLastNode]);
+                         pointerLastNode = 0;
                          System.out.println(nodesArcs[pointerLastNode].toString());
                          }
                          else
+                         {
+                             System.out.println("exit 2");
+                             AvailablePath = false;
                              break;
+                         }
                      }
                  }
              }
             }
             catch(Exception e)
             {
+                System.out.println("Exit 3");
+                AvailablePath = false;
+                System.out.println(source.getTag()+" tag al momento de la caida");
                 break;
             }
-            finally
-            {
-                AvailablePath = true;
-            }
         }
+        
+        System.out.println(source.getTag() + " sourceTag");
+        System.out.println(destiny.getTag()+" destinyTag");
         if (AvailablePath = false || queue.size() == 0)
         {
             System.out.println("NO available path conecting source and destiny");

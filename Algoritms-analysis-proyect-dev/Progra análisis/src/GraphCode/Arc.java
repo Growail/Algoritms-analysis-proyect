@@ -43,18 +43,18 @@ public class Arc implements Comparable<Arc>
      **/
     public Arc(Node node1, Node node2, int weight)
     {
-	/**if(node1.getTag().compareTo(node2.getTag()) <= 0)
+	if(node1.getTag().equals(node2.getTag()))
 	    {
-		this.node1 = node1;
-		this.node2 = node2;
+                return;
 	    }
 	else
-	    {**/
+	    {
 		this.node1 = node2;
 		this.node2 = node1;
-	   // }
+                this.weight = weight;
+	    }
 
-     	this.weight = weight;
+     	
 		
     }
 
