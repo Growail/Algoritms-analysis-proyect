@@ -8,4 +8,10 @@ public class Direction {
         this.origin = origin;
         this.destiny = destiny;
     }
+    
+    public int getDirectionLength(int currentTime){
+        double length = origin.getDistance(destiny);
+        int realTime = (int)length/120 + currentTime;
+        return realTime;
+    }
 }

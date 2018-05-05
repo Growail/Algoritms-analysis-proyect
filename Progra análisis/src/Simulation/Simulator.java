@@ -3,13 +3,24 @@ import MapCode.Drone;
 import MapCode.Station;
 import MapCode.Direction;
 import GraphCode.Node;
+import MapCode.Map;
 import java.util.Random;
+import logic.PlanDivideVenceras;
 
 public class Simulator {
     
+    private Map mainMap;
+    private PlanDivideVenceras mainLogic;
+    private int mainTimeClick;
     
-    public void createDrones(int droneQuantity, Node [] nodes, int stationQuntity){
+    public Simulator(int stationQuantity, int stationArcs, int droneQuantity, int simulationSeconds){
+        mainMap = new Map(stationQuantity, stationArcs);
+        mainTimeClick = simulationSeconds;
         
+        createDrones(droneQuantity, mainMap.getNodes(), stationQuantity);
+    }
+    
+    private void createDrones(int droneQuantity, Node [] nodes, int stationQuntity){
         /**
          * Crea las direcciones que deben seguir los drones.
          * Asigna esas direcciones a los drones.
@@ -27,9 +38,7 @@ public class Simulator {
             }
             
             nodes[origin].addDrone(new Drone(new Direction(nodes[origin].getStation(), nodes[destination].getStation())));
-            
         }
-        
         
     }
     

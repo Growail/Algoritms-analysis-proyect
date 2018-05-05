@@ -2,6 +2,7 @@
 
 package MapCode;
 import GraphCode.Graph;
+import GraphCode.Node;
 import java.util.Random;
 
 public class Map {
@@ -34,7 +35,10 @@ public class Map {
         
     }
     
-    
+    public Node[] getNodes(){
+        Node[] nodes = new Node[20];
+        return nodes;
+    }
     
     
     

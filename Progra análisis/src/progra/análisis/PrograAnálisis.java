@@ -21,7 +21,7 @@ public class PrograAnálisis {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Simulator a = new Simulator();
+        //Simulator a = new Simulator();
         
         int stationQuantity = 10;
         int droneQuantity = 1000;
@@ -33,7 +33,7 @@ public class PrograAnálisis {
             nodes[i] = new Node("", b);
         }
         
-        a.createDrones(droneQuantity, nodes, stationQuantity);
+        //a.createDrones(droneQuantity, nodes, stationQuantity);
         
         
     }

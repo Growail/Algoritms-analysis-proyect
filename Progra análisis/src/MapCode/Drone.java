@@ -7,7 +7,7 @@ public class Drone {
     private ArrayList <Direction> directions = new ArrayList<Direction>();
     
     public Drone(Direction mainDirection){
-        
+        //calculate directions from main direction
     }
     
     public Direction getCurrentDirection(){

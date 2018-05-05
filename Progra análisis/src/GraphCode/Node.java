@@ -23,7 +23,7 @@ public class Node
 
     public Node (String tag, int[] axis)
     {
-        station = new Station();
+        station = new Station(tag, axis);
 	this.tag = tag;
         
         this.axis = new int[2];
