@@ -1,5 +1,7 @@
 package GraphCode;
 
+import MapCode.Path;
+
 /*
  * Un arc es una arista no dirijida
  * entre 2 nodos
@@ -15,6 +17,8 @@ public class Arc implements Comparable<Arc>
     
     private int height;
     private int width;
+    
+    private Path[] MainPath;
 
     /**
      * @param node1. de donde sale
@@ -23,6 +27,7 @@ public class Arc implements Comparable<Arc>
     public Arc(Node node1, Node node2)
     {
 	this(node1, node2, 1);
+        
     }
 
     /**
@@ -38,18 +43,18 @@ public class Arc implements Comparable<Arc>
      **/
     public Arc(Node node1, Node node2, int weight)
     {
-	/**if(node1.getTag().compareTo(node2.getTag()) <= 0)
+	if(node1.getTag().equals(node2.getTag()))
 	    {
-		this.node1 = node1;
-		this.node2 = node2;
+                return;
 	    }
 	else
-	    {**/
+	    {
 		this.node1 = node2;
 		this.node2 = node1;
-	   // }
+                this.weight = weight;
+	    }
 
-     	this.weight = weight;
+     	
 		
     }
 
@@ -143,6 +148,10 @@ public class Arc implements Comparable<Arc>
 	return false;
     }
     
+    public void addDestination(Node destination, int distance)
+    {
+        
+    }
     public Node getDestination(){
         return node2;
     }
@@ -155,4 +164,30 @@ public class Arc implements Comparable<Arc>
         
         
     }
+
+    public void setNode1(Node node1) {
+        this.node1 = node1;
+    }
+
+    public void setNode2(Node node2) {
+        this.node2 = node2;
+    }
+
+    public void setNextArc(Arc nextArc) {
+        this.nextArc = nextArc;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setMainPath(Path[] MainPath) {
+        this.MainPath = MainPath;
+    }
+    
+    
 }

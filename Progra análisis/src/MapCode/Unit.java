@@ -1,19 +1,17 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package MapCode;
 
-import java.util.ArrayList;
-
+/**
+ *
+ * @author Steven
+ */
 public class Unit {
     
-    private ArrayList <Drone> drones = new ArrayList <Drone>  ();
-    private int lastStopDronesIndex; //Indice que separa los drones que no deben viajar a otra estacion despues de llegar y los que sí.
-    private int arrivingTime;
-    
-    
-    public void dischargeDronesCurrentStation(){
-        
-        for(int currentDrone = 0; currentDrone <= lastStopDronesIndex ; ++currentDrone){
-            drones.remove(currentDrone); //LLegan a la estacion.
-        }
-    }
+    private Boolean Empty;
+    int DroneQuantity;
     
 }

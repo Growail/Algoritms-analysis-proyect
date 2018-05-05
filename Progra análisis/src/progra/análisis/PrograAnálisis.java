@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 package progra.análisis;
-import GraphCode.Node;
-import MapCode.Drone;
+import GraphCode.Graph;
 import MapCode.Map;
-import Simulation.Simulator;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,20 +20,10 @@ public class PrograAnálisis {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Simulator a = new Simulator();
-        
-        int stationQuantity = 10;
-        int droneQuantity = 1000;
-        
-        Node[] nodes = new Node[stationQuantity];
-        int[] b = new int[2];
-        
-        for(int i = 0; i<stationQuantity ; ++i){
-            nodes[i] = new Node("", b);
-        }
-        
-        a.createDrones(droneQuantity, nodes, stationQuantity);
-        
+        int[][] arreglo;
+        arreglo = new int[10][2];
+        Graph G = new Graph(10,2,arreglo);
+        G.calculate("A5", "A3");
         
     }
     
